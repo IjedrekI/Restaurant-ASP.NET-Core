@@ -17,6 +17,9 @@ namespace Restaurant.Pages.Restaurants
         public string Message { get; set; }
         public IEnumerable<Food.Restaurant> Restaurants { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
+
         public ListModel(
             IConfiguration configuration, 
             IRestaurantData restaurantData)
@@ -27,7 +30,7 @@ namespace Restaurant.Pages.Restaurants
 
         public void OnGet()
         {
-            Restaurants = restaurantData.GetAll();
+            Restaurants = restaurantData.GetRestaurantByName(SearchTerm);
             Message = configuration["Message"];
         }
     }

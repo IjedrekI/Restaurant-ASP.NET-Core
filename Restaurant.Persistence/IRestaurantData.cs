@@ -6,7 +6,7 @@ namespace Restaurant.Persistence
 {
     public interface IRestaurantData
     {
-        IEnumerable<Food.Restaurant> GetAll();
+        IEnumerable<Food.Restaurant> GetRestaurantByName(string name);
         Food.Restaurant GetRestaurant(int id);
     }
 }
