@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Restaurant.Food;
+using System.Linq;
 
 namespace Restaurant.Persistence
 {
@@ -20,14 +21,20 @@ namespace Restaurant.Persistence
             };
         }
 
-        public IEnumerable<Food.Restaurant> GetAll()
-        {
-            return restaurants;
-        }
-
         public Food.Restaurant GetRestaurant(int id)
         {
-            throw new NotImplementedException();
+            return restaurants.FirstOrDefault(r => r.Id == id);
+        }
+
+        public IEnumerable<Food.Restaurant> GetRestaurantByName(string name = "")
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return restaurants;
+
+            var result = restaurants
+                .Where(x => x.Name.Contains(name));
+
+            return result;
         }
     }
 }
