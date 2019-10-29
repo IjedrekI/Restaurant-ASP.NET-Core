@@ -12,13 +12,14 @@ namespace Restaurant.Pages.Restaurants
     public class DetailModel : PageModel
     {
         private readonly IRestaurantData restaurantData;
+        public Food.Restaurant Rest { get; set; }
+        [TempData] public string Message { get; set; }
 
         public DetailModel(IRestaurantData restaurantData)
         {
             this.restaurantData = restaurantData;
         }
 
-        public Food.Restaurant Rest{ get; set; }
         public IActionResult OnGet(int restaurantId)
         {
             this.Rest = restaurantData.GetRestaurant(restaurantId);

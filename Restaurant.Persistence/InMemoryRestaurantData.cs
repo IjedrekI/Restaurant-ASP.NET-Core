@@ -36,5 +36,37 @@ namespace Restaurant.Persistence
 
             return result;
         }
+
+        public Food.Restaurant Update(Food.Restaurant updatedRestaurant)
+        {
+            var res = restaurants.SingleOrDefault(r => r.Id == updatedRestaurant.Id);
+            
+            if(res != null)
+            {
+                res.Name = updatedRestaurant.Name;
+                res.Location = updatedRestaurant.Location;
+                res.Cusine = updatedRestaurant.Cusine;
+
+                return res;
+            }
+
+           
+            restaurants.Append(updatedRestaurant);
+
+            return restaurants.Last();
+        }
+
+        public int Commit()
+        {
+            return 0;
+        }
+
+        public Food.Restaurant Add(Food.Restaurant newRestaurant)
+        {
+            newRestaurant.Id = restaurants.Max(a => a.Id) + 1;
+            restaurants.Append(newRestaurant);
+
+            return newRestaurant;
+        }
     }
 }

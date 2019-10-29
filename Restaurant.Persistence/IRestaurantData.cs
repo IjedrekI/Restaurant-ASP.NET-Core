@@ -8,5 +8,8 @@ namespace Restaurant.Persistence
     {
         IEnumerable<Food.Restaurant> GetRestaurantByName(string name);
         Food.Restaurant GetRestaurant(int id);
+        Food.Restaurant Add(Food.Restaurant newRestaurant);
+        Food.Restaurant Update(Food.Restaurant restaurant);
+        int Commit();
     }
 }
