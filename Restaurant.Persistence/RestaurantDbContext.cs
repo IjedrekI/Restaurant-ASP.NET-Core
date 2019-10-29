@@ -7,7 +7,10 @@ namespace Restaurant.Persistence
 {
     public class RestaurantDbContext: DbContext
     {
-        public DbSet<Food.Restaurant> Restaurants { get; set; }
+        public RestaurantDbContext(DbContextOptions<RestaurantDbContext> options)
+            : base(options)
+        { }
 
+        public DbSet<Food.Restaurant> Restaurants { get; set; }
     }
 }

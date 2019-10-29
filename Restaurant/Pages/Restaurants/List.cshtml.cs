@@ -30,7 +30,7 @@ namespace Restaurant.Pages.Restaurants
 
         public void OnGet()
         {
-            Restaurants = restaurantData.GetRestaurantByName(SearchTerm);
+            Restaurants = restaurantData.GetRestaurants();
             Message = configuration["Message"];
         }
     }
