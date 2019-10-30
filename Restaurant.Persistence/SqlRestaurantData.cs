@@ -39,6 +39,11 @@ namespace Restaurant.Persistence
             return restaurant;
         }
 
+        public int GetCountOfRestaurants()
+        {
+            return dbContext.Restaurants.Count();
+        }
+
         public Food.Restaurant GetRestaurant(int id)
         {
             return dbContext.Restaurants.Find(id);

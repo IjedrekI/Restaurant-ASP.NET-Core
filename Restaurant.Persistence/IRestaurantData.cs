@@ -12,6 +12,7 @@ namespace Restaurant.Persistence
         Food.Restaurant Add(Food.Restaurant newRestaurant);
         Food.Restaurant Update(Food.Restaurant restaurant);
         Food.Restaurant Delete(int id);
+        int GetCountOfRestaurants();
         int Commit();
     }
 }
